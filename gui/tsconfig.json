@@ -6,5 +6,5 @@
       "twxplore/*": ["src/ts/twxplore/*"]
     }
   },
-  "extends": "../../../lib/ts/base/tsconfig.base.json"
+  "extends": "@tetherless-world/twxplore-base/tsconfig.base.json"
 }

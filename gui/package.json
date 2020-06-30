@@ -6,7 +6,7 @@
     "@material-ui/core": "^4.9.4",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.44",
-    "@tetherless-world/twxplore-base": "1.0.10",
+    "@tetherless-world/twxplore-base": "1.0.11",
     "dotenv": "^8.2.0",
     "kepler.gl": "^2.1.2",
     "react-palm": "^3.1.2",
@@ -23,17 +23,9 @@
     "xstate": "^4.7.8",
     "semantic-ui-react": "^0.88.2"
   },
-  "license": "Apache 2",
-  "private": true,
-  "scripts": {
-    "build": "../../../node_modules/.bin/webpack --mode production -p",
-    "build-development": "../../../node_modules/.bin/webpack --mode development",
-    "build-win32": "..\\..\\..\\node_modules\\.bin\\webpack --mode production -p",
-    "generate": "../../../node_modules/.bin/graphql-codegen --config graphql-codegen-config.yml && ../../../node_modules/.bin/apollo codegen:generate --endpoint http://localhost:9000/api/graphql --target=typescript --includes=src/ts/**/*.graphql,src/ts/**/*.ts --tagName=gql --addTypename --globalTypesFile=src/ts/twxplore/gui/geo/api/graphqlGlobalTypes.ts types",
-    "start": "../../../node_modules/.bin/webpack-dev-server --mode development --hot --info-verbosity verbose --inline",
-    "start-win32": "..\\..\\..\\node_modules\\.bin\\webpack-dev-server --mode development --hot --info-verbosity verbose --inline"
-  },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.2.0",
+    "@graphql-codegen/fragment-matcher": "1.2.0",
     "@types/react-redux": "^7.1.6",
     "@types/react-resize-detector": "^4.2.0",
     "@types/react-router-redux": "^5.0.18",
@@ -41,6 +33,34 @@
     "@types/react-virtualized": "^9.21.7",
     "@types/redux-actions": "^2.6.1",
     "@types/styled-components": "^4.4.2",
-    "fs": "0.0.1-security"
+    "@typescript-eslint/parser": "^2.17.0",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.17.0",
+    "apollo": "2.27.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "copy-webpack-plugin": "4.6.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prefer-arrow": "^1.1.7",
+    "eslint-plugin-react": "^7.19.0",
+    "fs": "0.0.1-security",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "1.19.1",
+    "ts-loader": "^6.2.1",
+    "tsconfig-paths-webpack-plugin": "3.2.0",
+    "tslint": "^6.1.0",
+    "typescript": "^3.8.3",
+    "webpack": "4.29.3",
+    "webpack-cli": "3.2.3",
+    "webpack-dev-server": "3.1.14",
+    "webpack-merge": "^4.2.2"
+  },
+  "license": "Apache 2",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production -p",
+    "build-development": "webpack --mode development",
+    "generate": "graphql-codegen --config graphql-codegen-config.yml && apollo codegen:generate --endpoint http://localhost:9000/api/graphql --target=typescript --includes=src/ts/**/*.graphql,src/ts/**/*.ts --tagName=gql --addTypename --globalTypesFile=src/ts/twxplore/gui/geo/api/graphqlGlobalTypes.ts types",
+    "start": "webpack-dev-server --mode development --hot --info-verbosity verbose --inline"
   }
 }
