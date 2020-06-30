@@ -1,6 +1,5 @@
 package models.domain
 
-import io.github.tetherlessworld.twxplore.lib.base.models.domain.DomainModelSpec
 import models.GeoTestData
 
 class FeatureSpec extends DomainModelSpec {
