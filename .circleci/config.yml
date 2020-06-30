@@ -1,0 +1,55 @@
+version: 2
+jobs:
+  scala:
+    working_directory: ~/project
+    docker:
+      # First image is used to execute the steps
+      - image: circleci/openjdk:11
+      - image: tetherlessworld/twks-server:latest
+        name: twks-server
+    steps:
+      - checkout
+      - restore_cache:
+          key: sbt-cache-v1
+      - run:
+          name: Create test-results directory
+          command: mkdir -p test-results/scala
+      - run:
+          name: Build and test
+          command: |
+            sbt package test
+            cp app/geo/target/test-reports/*.xml ~/project/test-results/scala
+      - store_test_results:
+          path: test-results
+      - save_cache:
+          key: sbt-cache-v1
+          paths:
+            - "~/.ivy2/cache"
+            - "~/.sbt"
+            - "~/.m2"
+  ts:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - restore_cache:
+          key: gui-dependency-cache-v1-{{ checksum "gui/package.json" }}
+      - run:
+          command: |
+            cd gui
+            npm install
+      - save_cache:
+          key: gui-dependency-cache-v1-{{ checksum "gui/package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          command: |
+            cd gui
+            npm run build-development
+workflows:
+  version: 2
+  build:
+    jobs:
+      - scala
+      - ts
