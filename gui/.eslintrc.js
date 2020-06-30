@@ -1,1 +1,1 @@
-../../../lib/ts/base/.eslintrc.js
+node_modules/@tetherless-world/twxplore-base/.eslintrc.js
