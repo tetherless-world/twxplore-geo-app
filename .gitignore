@@ -1,0 +1,8 @@
+/data/
+/gui/dist/
+/gui/node_modules/
+/gui/package-lock.json
+/.idea/
+/logs/
+/project/project/
+target/
