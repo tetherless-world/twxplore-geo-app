@@ -17,7 +17,8 @@ lazy val geoApp = (project in file("."))
   .enablePlugins(PlayScala)
   .settings(
     libraryDependencies ++= Seq(
-      organization.value %% "twxplore-geo-lib" % version.value % "compile->compile;test->test",
+      organization.value %% "twxplore-geo-lib" % version.value % "compile->compile",
+      organization.value %% "twxplore-test-lib" % version.value % Test,
     ),
     name := "geo-app",
     routesGenerator := InjectedRoutesGenerator,
