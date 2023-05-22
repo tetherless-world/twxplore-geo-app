@@ -15,7 +15,7 @@ pyparsing==2.4.6
 pyshp==2.1.0
 pytest==5.3.5
 rdflib==4.2.2
-requests==2.23.0
+requests==2.31.0
 six==1.14.0
 tqdm==4.46.0
 urllib3==1.25.8
